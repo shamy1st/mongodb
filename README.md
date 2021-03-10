@@ -9,3 +9,4 @@ MongoDB (Humongous), because it can store lots and lots of data.
 ## MongoDB Ecosystem
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/mongodb-ecosystem.png)
+
