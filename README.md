@@ -126,9 +126,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/crud-example.png)
 
-###
+### Delete
 
-
+* will delete first record with departureAirport=TXL
+\> db.flightData.deleteOne({departureAirport: "TXL"})
 
 
 
