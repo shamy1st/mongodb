@@ -77,4 +77,12 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/mongodb-in-action-2.png)
 
-##
+## Course Outline
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/course-outline.png)
+
+## 
+
+
+
+
