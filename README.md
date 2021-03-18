@@ -25,7 +25,7 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Get Start
 
-* Run: /Users/elshamy/Documents/courses/mongodb/installation/mongodb-macos-x86_64-4.4.4/bin/mongo
+* Run: /installation-directory/bin/mongo
 
 \> show dbs
 - admin   0.000GB
@@ -81,7 +81,39 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/course-outline.png)
 
-## 
+## Basics
+
+### Start server & shell
+
+* start mongodb server
+  * run: /installation-directory/bin/mongod --dbpath "/data/db" --port 27018
+* start shell
+  * run: /installation-directory/bin/mongo --port 27018
+
+### Creating Databases & Collections
+
+\> show dbs
+
+\> use flights
+
+\> db.flightData.insertOne({
+
+"departureAirport": "MUC",
+
+"arrivalAirport": "SFO",
+
+"aircraft": "Airbus A380",
+
+"distance": 12000,
+
+"intercontinental": true
+
+})
+
+\> db.flightData.find().pretty()
+
+### JSON vs BSON
+
 
 
 
