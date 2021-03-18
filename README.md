@@ -235,7 +235,15 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Schemas & Relations: How to Structure Documents
 
+### Schema or No Schema!
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/schema-or-no-1.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/schema-or-no-2.png)
+
 ### 
+
+
 
 
 
