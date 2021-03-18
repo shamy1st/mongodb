@@ -36,9 +36,13 @@ MongoDB (Humongous), because it can store lots and lots of data.
 - switched to db shop
 
 \> db.products.insertOne({name: "iPhone 11", price: 560.00}) (create collection products into shop db with one record)
+
 {
+
   "acknowledged" : true,
+  
   "insertedId" : ObjectId("60531579e7f08c26e2b3d063")
+
 }
 
 
