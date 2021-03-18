@@ -222,5 +222,5 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/projection.png)
 
-\> db.passengers.find({}, {name: 1}).pretty()
+\> db.passengers.find({}, {name: 1, age: 1, _id: 0}).pretty()
 
