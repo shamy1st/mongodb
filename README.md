@@ -61,8 +61,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 }
 
-\> 
+\> db.products.insertOne({name: "iPhone 12 Pro", price: 949.99, description: "APPLE iPhone 12 Pro 128GB"})
 
+\> db.products.insertOne({name: "iPhone 12 Mini", price: 649.99, description: "APPLE iPhone 12 Mini", details: {storage: "128GB", color: "Black"}})
 
+\> db.products.find().pretty()
 
 
