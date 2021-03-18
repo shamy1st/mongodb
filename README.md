@@ -45,4 +45,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 }
 
+\> db.products.find() (if no argument then return all data in this collection)
+
+{ "_id" : ObjectId("60531579e7f08c26e2b3d063"), "name" : "iPhone 11", "price" : 560 }
+
 
