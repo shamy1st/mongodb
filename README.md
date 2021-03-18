@@ -32,3 +32,7 @@ MongoDB (Humongous), because it can store lots and lots of data.
 - config  0.000GB
 - local   0.000GB
 
+\> use shop
+- switched to db shop
+
+
