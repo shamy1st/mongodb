@@ -129,8 +129,18 @@ MongoDB (Humongous), because it can store lots and lots of data.
 ### Delete
 
 * will delete first record with departureAirport=TXL
+
 \> db.flightData.deleteOne({departureAirport: "TXL"})
 
+### Update
+
+* update one record where distance=12000 by adding new field marker=updated
+
+\> db.flightData.updateOne({distance: 12000}, {$set: {marker: "updated"}})
+
+* update all records by adding new field marker=toDelete
+
+\> db.flightData.updateMany({}, {$set: {marker: "toDelete"}})
 
 
 
