@@ -49,4 +49,20 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 { "_id" : ObjectId("60531579e7f08c26e2b3d063"), "name" : "iPhone 11", "price" : 560 }
 
+\> db.products.find().pretty() (the same as before but easier to read)
+
+{
+
+  "_id" : ObjectId("60531579e7f08c26e2b3d063"),
+
+  "name" : "iPhone 11",
+
+  "price" : 560
+
+}
+
+\> 
+
+
+
 
