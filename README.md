@@ -181,6 +181,15 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.flightData.find({intercontinental: false}).pretty()
 
+\> db.flightData.find({distance: {$gt: 900}}).pretty()
+
+\> db.flightData.findOne({distance: {$gt: 900}}).pretty()
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/find-cursor.png)
+
+* find only return cursor with about 20 records and not all records
+* to get all records use: db.passengers.find().toArray()
+
 ### Update
 
 * update one record where distance=12000 by adding new field marker=updated
@@ -190,6 +199,14 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * update all records by adding new field marker=toDelete
 
 \> db.flightData.updateMany({}, {$set: {marker: "toDelete"}})
+
+* replace only one occurance, and no need for $set
+
+\> db.flightData.replaceOne({_id: ObjectId("60538c46e7f08c26e2b3d067")}, {marker: "toDelete"})
+
+* replace old object by new one, and no need for $set
+
+\> db.flightData.update({_id: ObjectId("60538c46e7f08c26e2b3d067")}, {marker: "toDelete"})
 
 ### Delete
 
