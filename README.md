@@ -28,7 +28,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * Run: /Users/elshamy/Documents/courses/mongodb/installation/mongodb-macos-x86_64-4.4.4/bin/mongo
 
 \> show dbs
+
 admin   0.000GB
+
 config  0.000GB
+
 local   0.000GB
 
