@@ -218,6 +218,9 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.flightData.deleteMany({marker: "toDelete"})
 
+### Projection
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/projection.png)
 
+\> db.passengers.find({}, {name: 1}).pretty()
 
