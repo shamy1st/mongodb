@@ -179,15 +179,7 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.flightData.find().pretty()
 
-### Delete
-
-* will delete first record with departureAirport=TXL
-
-\> db.flightData.deleteOne({departureAirport: "TXL"})
-
-* delete all records with marker=toDelete
-
-\> db.flightData.deleteMany({marker: "toDelete"})
+\> db.flightData.find({intercontinental: false}).pretty()
 
 ### Update
 
@@ -198,6 +190,17 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * update all records by adding new field marker=toDelete
 
 \> db.flightData.updateMany({}, {$set: {marker: "toDelete"}})
+
+### Delete
+
+* will delete first record with departureAirport=TXL
+
+\> db.flightData.deleteOne({departureAirport: "TXL"})
+
+* delete all records with marker=toDelete
+
+\> db.flightData.deleteMany({marker: "toDelete"})
+
 
 
 
