@@ -126,11 +126,68 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/crud-example.png)
 
+### Create
+
+\> db.flightData.insertOne({
+
+"departureAirport": "MUC",
+
+"arrivalAirport": "SFO",
+
+"aircraft": "Airbus A380",
+
+"distance": 12000,
+
+"intercontinental": true
+
+})
+
+
+\> db.flightData.insertMany([
+
+  {
+
+"departureAirport": "MUC",
+
+"arrivalAirport": "SFO",
+
+"aircraft": "Airbus A380",
+
+"distance": 12000,
+
+"intercontinental": true
+
+},
+
+{
+
+"departureAirport": "LHR",
+
+"arrivalAirport": "TXL",
+
+"aircraft": "Airbus A320",
+
+"distance": 950,
+
+"intercontinental": false
+
+}
+
+])
+
+### Read
+
+\> db.flightData.find().pretty()
+
 ### Delete
 
 * will delete first record with departureAirport=TXL
 
 \> db.flightData.deleteOne({departureAirport: "TXL"})
+
+* delete all records with marker=toDelete
+
+\> db.flightData.deleteMany({marker: "toDelete"})
 
 ### Update
 
