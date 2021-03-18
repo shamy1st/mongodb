@@ -224,3 +224,13 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.passengers.find({}, {name: 1, age: 1, _id: 0}).pretty()
 
+### Embedded Documents
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/embedded-documents.png)
+
+### Arrays
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/arrays.png)
+
+
+
