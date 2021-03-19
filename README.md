@@ -298,7 +298,11 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example6.png)
 
+### Join Reference Relations using lookup()
+
+\> db.books.aggregate([{$lookup: {from: "authors", localField: "authors", foreignField: "_id", as: "creators"}}])
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-join.png)
+
 ### 
-
-
 
