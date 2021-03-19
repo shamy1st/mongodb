@@ -407,9 +407,71 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## The Shell & The Server
 
+### The Server
+
+* check /installation-directory/bin/mongod --help
+
+### dbpath & logpath
+
+* create db/ directory and logs/ directory in the installation-directory/
+
+\> /installation-directory/bin/mongod --dbpath /installation-directory/db --logpath /installation-directory/logs/log.log
+
+### repair
+
+* Run repair on all dbs, if you have any errors relate to your database.
+
+\> /installation-directory/bin/mongod --repair
+
+### directoryperdb
+
+* Each database will be stored in a separate directory
+
+\> /installation-directory/bin/mongod --directoryperdb
+
+### storageEngine
+
+* What storage engine to use - defaults to **wiredTiger** if no data files present
+
+\> /installation-directory/bin/mongod --storageEngine
+
+### fork
+
+* Fork server process, and run as a background process "background service".
+* Fork isn't available in Windows, but while installation check run as service.
+
+\> /installation-directory/bin/mongod --fork
+
+* how to quit? 
+  * from mongo shell: /installation-directory/bin/mongo
+  * use admin
+  * db.shutdownServer()
+
+### [Config File](https://docs.mongodb.com/manual/reference/configuration-options/)
+
+* we can set all previous settings in config file
+* in /installation-directory/bin/ create file "mongod.cfg"
+
+        storage:
+          dbPath: "/Users/elshamy/Documents/courses/mongodb/installation/mongodb-macos-x86_64-4.4.4/db"
+        systemLog:
+          destination: file
+          path: "/Users/elshamy/Documents/courses/mongodb/installation/mongodb-macos-x86_64-4.4.4/logs/log.log"
+
+* while start mongodb server set config file:
+
+\> /installation-directory/bin/mongod -f /installation-directory/bin/mongod.cfg
+
+### Shell
+
+* check /installation-directory/bin/mongo --help
+* after you connect to shell you can also check: help
+* in database level check: db.help()
+* in collection level check: db.test.help()
 
 
 ## MongoDB Compass to Explore Data Visually
+
 
 
 ## Indexes
