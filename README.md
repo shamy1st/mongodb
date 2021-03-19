@@ -241,10 +241,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/schema-or-no-2.png)
 
+### Data Types
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/data-types.png)
+
 ### 
-
-
-
-
 
 
