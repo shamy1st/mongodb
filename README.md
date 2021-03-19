@@ -479,6 +479,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/why-indexes.png)
 
+* index come with cost in insertion
+
 ![](https://github.com/shamy1st/mongodb/blob/main/images/too-many-indexes.png)
 
 ## Geospatial Data
