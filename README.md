@@ -318,7 +318,91 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/schema-validation-2.png)
 
-### 
+    db.createCollection('posts', {
+      validator: {
+        $jsonSchema: {
+          bsonType: 'object',
+          required: ['title', 'text', 'creator', 'comments'],
+          properties: {
+            title: {
+              bsonType: 'string',
+              description: 'must be a string and is required'
+            },
+            text: {
+              bsonType: 'string',
+              description: 'must be a string and is required'
+            },
+            creator: {
+              bsonType: 'objectId',
+              description: 'must be an objectid and is required'
+            },
+            comments: {
+              bsonType: 'array',
+              description: 'must be an array and is required',
+              items: {
+                bsonType: 'object',
+                required: ['text', 'author'],
+                properties: {
+                  text: {
+                    bsonType: 'string',
+                    description: 'must be a string and is required'
+                  },
+                  author: {
+                    bsonType: 'objectId',
+                    description: 'must be an objectid and is required'
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    });
+
+### Edit Validation Schema
+
+    db.runCommand({
+      collMod: 'posts',
+      validator: {
+        $jsonSchema: {
+          bsonType: 'object',
+          required: ['title', 'text', 'creator', 'comments'],
+          properties: {
+            title: {
+              bsonType: 'string',
+              description: 'must be a string and is required'
+            },
+            text: {
+              bsonType: 'string',
+              description: 'must be a string and is required'
+            },
+            creator: {
+              bsonType: 'objectId',
+              description: 'must be an objectid and is required'
+            },
+            comments: {
+              bsonType: 'array',
+              description: 'must be an array and is required',
+              items: {
+                bsonType: 'object',
+                required: ['text', 'author'],
+                properties: {
+                  text: {
+                    bsonType: 'string',
+                    description: 'must be a string and is required'
+                  },
+                  author: {
+                    bsonType: 'objectId',
+                    description: 'must be an objectid and is required'
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      validationAction: 'warn'
+    });
 
 
 
