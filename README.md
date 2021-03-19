@@ -264,6 +264,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * When not working with the shell but a MongoDB driver for your app programming language (e.g. Java, PHP, .NET, Node.js, ...), you can use the driver to create these specific numbers. https://mongodb.github.io/mongo-java-driver/4.2/apidocs/
 * By browsing the API docs for the driver you're using, you'll be able to identify the methods for building int32s, int64s etc.
 
-### 
+### Data Schemas & Data Modelling
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/schemas-and-modelling.png)
 
 
