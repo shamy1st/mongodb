@@ -483,6 +483,41 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/too-many-indexes.png)
 
+### Adding a Single Field Index
+
+* Download database tools: https://www.mongodb.com/try/download/database-tools
+
+\> /path-to-database-tools/bin/mongoimport persons.json -d contactData -c contacts --jsonArray
+
+* connect to shell and run the following
+
+\> use contactData
+
+\> db.contacts.explain("executionStats").find({"dob.age": {$gt: 60}})
+
+* **"executionTimeMillis" : 12**, "totalKeysExamined" : 0, "totalDocsExamined" : 5000
+
+* now create index (1 for asc, -1 for desc)
+
+\> db.contacts.createIndex({"dob.age": 1})
+
+* now run the command again with explain
+
+\> db.contacts.explain("executionStats").find({"dob.age": {$gt: 60}})
+
+* **"executionTimeMillis" : 4**, "totalKeysExamined" : 1222, "totalDocsExamined" : 1222
+
+* to delete index
+
+\> db.contacts.dropIndex({"dob.age": 1})
+
+* if we changed age to 20 the index will slow down the speed of the query.
+* then you should choose index depending on your query because sometimes it will slow down.
+
+### Creating Compound Indexes
+
+
+
 ## Geospatial Data
 
 ## Aggregation Framework
