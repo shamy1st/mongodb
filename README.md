@@ -37,6 +37,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.dropDatabase() (to drop current database)
 
+\> db.stats() (show statistics about current database)
+
 \> db.products.insertOne({name: "iPhone 11", price: 560.00}) (create collection products into shop db with one record)
 
 {
@@ -46,6 +48,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
   "insertedId" : ObjectId("60531579e7f08c26e2b3d063")
 
 }
+
+\> db.products.drop() (drop products collection from current database)
 
 \> db.products.find() (if no argument then return all data in this collection)
 
@@ -243,9 +247,22 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/schema-or-no-2.png)
 
-### Data Types
+### [Data Types](https://docs.mongodb.com/manual/reference/bson-types/)
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/data-types.png)
+
+* [MongoDB Limits and Thresholds](https://docs.mongodb.com/manual/reference/limits/)
+* MongoDB has a couple of hard limits - most importantly, a single document in a collection (including all embedded documents it might have) must be <= 16MB. Additionally, you may only have 100 levels of embedded documents.
+* Normal integers (int32) can hold a maximum value of +-2,147,483,647
+* Long integers (int64) can hold a maximum value of +-9,223,372,036,854,775,807
+* Text can be as long as you want - the limit is the 16MB restriction for the overall document
+* It's also important to understand the difference between int32 (NumberInt), int64 (NumberLong) and a normal number as you can enter it in the shell. The same goes for a normal double and NumberDecimal.
+* NumberInt creates a int32 value => NumberInt(55)
+* NumberLong creates a int64 value => NumberLong(7489729384792)
+* If you just use a number (e.g. insertOne({a: 1}), this will get added as a normal double into the database. The reason for this is that the shell is based on JS which only knows float/ double values and doesn't differ between integers and floats.
+* NumberDecimal creates a high-precision double value => NumberDecimal("12.99") => This can be helpful for cases where you need (many) exact decimal places for calculations.
+* When not working with the shell but a MongoDB driver for your app programming language (e.g. Java, PHP, .NET, Node.js, ...), you can use the driver to create these specific numbers. https://mongodb.github.io/mongo-java-driver/4.2/apidocs/
+* By browsing the API docs for the driver you're using, you'll be able to identify the methods for building int32s, int64s etc.
 
 ### 
 
