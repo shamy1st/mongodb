@@ -405,6 +405,14 @@ MongoDB (Humongous), because it can store lots and lots of data.
     });
 
 
+## The Shell & The Server
+
+
+
+## MongoDB Compass to Explore Data Visually
+
+
+## Indexes
 
 
 
