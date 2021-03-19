@@ -304,5 +304,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/relations-join.png)
 
-### 
+### Blog Project Example
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/blog-example.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/blog-example-sketch.png)
+
+### 
