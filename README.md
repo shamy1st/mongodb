@@ -472,7 +472,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## MongoDB Compass to Explore Data Visually
 
-
+* Download compass: https://www.mongodb.com/try/download/compass
+* 
 
 ## Indexes
 
