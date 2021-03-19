@@ -268,4 +268,37 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/schemas-and-modelling.png)
 
+### Relations
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-summary.png)
+
+### One To One Relations - Embedded
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example1.png)
+
+### One To One - Using References
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example2.png)
+
+### One To Many - Embedded
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example3.png)
+
+### One To Many - Using References
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example4.png)
+
+### Many To Many - Embedded
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example5.png)
+
+### Many To Many - Using References
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/relations-example6.png)
+
+### 
+
+
 
