@@ -312,7 +312,16 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/blog-example-solution.png)
 
-### Schema Validation
+### [Schema Validation](https://docs.mongodb.com/manual/core/schema-validation/)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/schema-validation-1.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/schema-validation-2.png)
+
+### 
+
+
+
 
 
 
