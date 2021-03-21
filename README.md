@@ -605,10 +605,134 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Multi-Key Indexes
 
+\> db.contacts.drop()
 
+\> db.contacts.insertOne({name: "Ahmed", hobbies: ["Cooking", "Sports"], addresses: [{street: "Main Street"}, {street: "Second Street"}]})
+
+\> db.contacts.createIndex({hobbies: 1})
+
+\> db.contacts.explain("executionStats").find({hobbies: "Sports"})
+
+* used IXSCAN
+* mongodb turn array to multi-key index **"isMultiKey: true"**
+* multi-key index have a bigger size than single index
+* multi-key index turn array values to a seperate index
+* for example if you have array of 4 elements and you have 1000 documents, then it will stored in 4000 elements
+
+\> db.contacts.createIndex({addresses: 1})
+
+\> db.contacts.explain("executionStats").find({"addresses.street": "Main Street"})
+
+* used COLLSCAN
+
+\> db.contacts.explain("executionStats").find({addresses: {street: "Main Street"}})
+
+* used IXSCAN
+
+\> db.contacts.createIndex({"addresses.street": 1})
+
+* now used IXSCAN, multi-key index
+* multi-key of multi-key index will leads to performance issue
+
+\> db.contacts.createIndex({name: 1, hobbies: 1})
+
+* this compound index with only one multi-key is working good
+
+\> db.contacts.createIndex({addresses: 1, hobbies: 1})
+
+* cannot have compound index of more than one multi-key index
+* because compound index do cartesian product of the two keys
+* for example for each address will store all hobbies, which is very bad performance
+
+### Text Indexes
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/text-index.png)
+
+\> db.products.insertMany([{title: "A Book", description: "This is an awesome book about a young artist!"},{title: "Red T-Shirt", description: "This T-Shirt is red and it's pretty awesome!"}])
+
+\> db.products.createIndex({description: "text"})
+
+* mongodb will remove all stop words like (is, a, the, ...), and store key words in essential array
+
+\> db.products.find({$text: {$search: "awesome"}}).pretty()
+
+* only have one text index per collection, because text index is expensive
+* then no need to specify the field name in the search
+* everything is stored in lowercase
+* if you search about "red book", the result will contain all products with word "red" + all products with word "book"
+* to search about phrase you should surround it by double-quotes
+
+\> db.products.find({$text: {$search: "\"red boook\""}}).pretty()
+\> db.products.find({$text: {$search: "\"awesome boook\""}}).pretty()
+
+* this is more faster than regular expression
+
+### Text Indexes & Sorting
+
+* sorting the search result is important
+
+\> db.products.find({$text: {$search: "awesome t-shirt"}}).pretty()
+
+* the result will show "A Book" product before "Red T-Shirt" product, while "Red T-Shirt" product contains both key words "awesome" and "t-shirt", but "A Book" product contains only one word "awesome"
+
+\> db.products.find({$text: {$search: "awesome t-shirt"}}, {score: {$meta: "textScore"}}).sort({score: {$meta: "textScore"}}).pretty()
+
+* now sorting the search result by score while mongodb provide
+
+### Combined Text Indexes
+
+\> db.products.getIndexes()
+
+* drop text index by name: "description_text"
+
+\> db.products.dropIndex("description_text")
+
+\> db.products.createIndex({title: "text", description: "text"})
+
+\> db.products.find({$text: {$search: "book"}}).pretty()
+
+### Text Indexes to Exclude Words
+
+* put minus "-" before the word which you want to exclude it's search result
+
+### Setting the Default Language & Using Weights
+
+\> db.products.getIndexes()
+
+* drop text index by name: "title_text_description_text"
+
+\> db.products.dropIndex("title_text_description_text")
+
+\> db.products.createIndex({title: "text", description: "text"}, {default_language: "german", weights: {title: 1, description: 10}})
+
+* now default_langauge is german
+* description now is 10 times more important than title in calculating the score
+
+\> db.products.find({$text: {$search: "red", $language: "german"}}, {score: {$meta: "textScore"}}).pretty()
+
+* now you will find different score than before
+
+### How to add Indexes?
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/building-indexes.png)
+
+* creating index in foreground make lock on the collection while creating, which can cause problems
+* all previous indexes which we already did was in foreground
+* we will see how to add indexes in background
+
+\> db.ratings.createIndex({age: 1}, {background: true})
+
+* now it's created without lock on the collection
+
+### Indexes Summary
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/indexes-summary.png)
+
+* More on partialFilterExpressions: https://docs.mongodb.com/manual/core/index-partial/
+* Supported default_languages: https://docs.mongodb.com/manual/reference/text-search-languages/#text-search-languages
+* How to use different languages in the same index: https://docs.mongodb.com/manual/tutorial/specify-language-for-text-index/#create-a-text-index-for-a-collection-in-multiple-languages
 
 ## Geospatial Data
-
 
 
 ## Aggregation Framework
