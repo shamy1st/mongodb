@@ -810,6 +810,13 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Security
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/security-checklist.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/authentication-authorization.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/role-based-access-control.png)
+
+
 ## Performance, Fault Tolerancy & Deployment
 
 ## Transactions
