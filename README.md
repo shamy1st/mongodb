@@ -806,6 +806,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Numeric Data
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/number-types.png)
+
 ## Security
 
 ## Performance, Fault Tolerancy & Deployment
