@@ -816,6 +816,9 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/role-based-access-control.png)
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/why-roles.png)
+
+
 
 ## Performance, Fault Tolerancy & Deployment
 
