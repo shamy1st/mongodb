@@ -734,6 +734,71 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Geospatial Data
 
+### [GeoJSON Objects](https://docs.mongodb.com/manual/reference/geojson/)
+
+* format -> type: "one of supported types like Point", coordinates: \[logitude, latitude\]
+* from google maps latitude comes first then latitude
+
+\> db.places.insertOne({name: "Rathausplatz", location: {type: "Point", coordinates: \[16.3538882, 48.2205935\]}})
+
+### Geo Queries
+
+* provide your current location \[logitude, latitude\]
+
+\> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: \[16.3611409, 48.2187821\]}}}})
+
+* you will get error: unable to find index for $geoNear query
+* need Geopatial index
+
+\> db.places.createIndex({location: "2dsphere"})
+
+* now repeat the find query again will success
+
+\> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: \[16.3611409, 48.2187821\]}}}})
+
+* how is near defined?!
+* pass $maxDistance and $minDistance
+
+\> db.places.find({location: {$near: {$geometry: {type: "Point", coordinates: \[16.3611409, 48.2187821\]}, $maxDistance: 600, $minDistance: 10}}})
+
+* now you find the point is near to you within 600 meter
+
+### Finding Places Inside a Certain Area
+
+\> const p1 = \[logitude, latitude\]
+
+\> const p2 = \[logitude, latitude\]
+
+\> const p3 = \[logitude, latitude\]
+
+\> const p4 = \[logitude, latitude\]
+
+\> db.places.find({location: {$geoWithin: {$geometry: {type: "Polygon", coordinates: \[\[p1, p2, p3, p4, p1\]\]}}}})
+
+* now if any point in the collection places is within this polygon will get in the result
+
+### Finding Out If a User Is Inside a Specific Area
+
+\> db.areas.insertOne({name: "A specific area", area: {type: "Polygon", coordinates: \[\[p1, p2, p3, p4, p1\]\]}})
+
+\> db.areas.createIndex({area: "2dsphere"})
+
+\> db.areas.find({area: {$geoIntersects: {$geometry: {type: "Point", coordinates: \[16.3611409, 48.2187821\]}}})
+
+* also you can check intersect of area with another area
+
+### Finding Places Within a Certain Radius
+
+* [Calculate Distance Using Spherical Geometry](https://docs.mongodb.com/manual/tutorial/calculate-distances-using-spherical-geometry-with-2d-geospatial-indexes/) to calculate the radius 1km = 1 / 6,378.1
+
+\> db.places.find({location: {$geoWithin: {$centerSphere: \[\[longitude, latitude\], radius\]}}})
+
+### Geopatial Summary
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/geopatial-summary.png)
+
+* Official Geospatial Docs: https://docs.mongodb.com/manual/geospatial-queries/
+* Geospatial Query Operators: https://docs.mongodb.com/manual/reference/operator/query-geospatial/
 
 ## Aggregation Framework
 
