@@ -818,6 +818,34 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/why-roles.png)
 
+### Creating User
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/creating-user.png)
+
+* start server but with param --ath
+
+\> mongod --auth
+
+* now start shell without any user
+
+\> mongo
+
+* the problem how you can create user without having any user
+* mongodb give exception for localhost user for creating only one user
+
+\> use admin
+
+\> db.createUser({user: "admin", pwd: "admin", roles: ["userAdminAnyDatabase"]})
+
+\> db.auth("admin", "admin")
+
+\> show dbs
+
+* now you can show everything
+
+### Built-In Roles
+
+
 
 
 ## Performance, Fault Tolerancy & Deployment
