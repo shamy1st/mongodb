@@ -843,10 +843,17 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 * now you can show everything
 
-### Built-In Roles
+### [Built-In Roles](https://docs.mongodb.com/manual/reference/built-in-roles/)
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/builtin-roles.png)
 
+### Assigning Roles to Users & Databases
 
+### Updating & Extending Roles to Other Databases
+
+### Adding SSL Transport Encryption
+
+### Encryption at REST
 
 ## Performance, Fault Tolerancy & Deployment
 
