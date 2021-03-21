@@ -558,9 +558,46 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Partial Filters
 
+\> db.contacts.createIndex({"dob.age": 1}, {partialFilterExpression: {gender: "male"}})
 
+* when you query on "dob.age" alone mongodb will do collection scan and will include females in the result.
+* but when you query on "dob.age" with gender, then it will use index scan
+* now what is the difference between compound index and partial filter?
+* compound index take more space, but in the same time both fields are working alone or combined
+* partial filter less space than compound index, but working only in the field of the index with filter
+
+### Partial Index
+
+* if you want to create unique index, but in the same time allow null
+
+\> db.users.createIndex({email: 1}, {unique: true, partialFilterExpression: {email: {$exists: true}}})
+
+* now you have unique index on email and you can insert user without email
+
+### Time-To-Live (TTL) Index
+
+\> db.sessions.createIndex({createdAt: 1}, {expireAfterSeconds: 10})
+
+* any record create after setting this index will expire after 10 seconds and will be deleted
+* if the record was created before this index, it will expire only if a new record is inserted and expired after the index is setted
+
+### Query Diagnosis & Query Planning
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/query-planning.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/efficient-queries.png)
+
+### Covered Queries
+
+* is the query with "totalDocsExamined: 0" and you can reach this by the following
+* only include the search field in the result and ignore "_id"
+
+\> db.contacts.explain("executionStats").find({name: "Max"}, {_id:0, name: 1})
+
+### 
 
 ## Geospatial Data
+
 
 
 ## Aggregation Framework
