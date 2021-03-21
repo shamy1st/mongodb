@@ -526,11 +526,14 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * if we changed age to 20 the index will slow down the speed of the query.
 * then you should choose index depending on your query because sometimes it will slow down.
 
-### Creating Compound Indexes
+### Compound Indexes
 
-* the order of the fields doesn't matter.
+* the order of the fields is important
+* the second field is not supported by compound index
 
 \> db.contacts.createIndex({"dob.age": 1, gender: 1})
+
+* but in the query it doesn't matter which field comes first
 
 \> db.contacts.explain("executionStats").find({"dob.age": 35, "gender": "male"})
 
@@ -594,7 +597,15 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 \> db.contacts.explain("executionStats").find({name: "Max"}, {_id:0, name: 1})
 
-### 
+### How MongoDB Rejects a Plan?
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/winning-plans.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/clear-winning-plan.png)
+
+### Multi-Key Indexes
+
+
 
 ## Geospatial Data
 
