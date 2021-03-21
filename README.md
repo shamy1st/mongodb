@@ -475,6 +475,18 @@ MongoDB (Humongous), because it can store lots and lots of data.
 * Download compass: https://www.mongodb.com/try/download/compass
 * Explore the UI
 
+## Create Operations
+
+
+## Read Operations
+
+
+## Update Operations
+
+
+## Delete Operations
+
+
 ## Indexes
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/why-indexes.png)
@@ -516,9 +528,40 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Creating Compound Indexes
 
+* the order of the fields doesn't matter.
+
+\> db.contacts.createIndex({"dob.age": 1, gender: 1})
+
+\> db.contacts.explain("executionStats").find({"dob.age": 35, "gender": "male"})
+
+* when you do query on "dob.age" it will use index scan, but if you will do query on "gender" it will do collection scan.
+
+### Using Indexes for Sorting
+
+\> db.contacts.explain("executionStats").find({"dob.age": 35}).sort({gender: 1})
+
+* if you are making sorting without indexes it will take a long time and maybe it will timeout because mongodb will fetch and sort them in memory and mongodb has limiation 32 MB memory threshold.
+
+### Default Index
+
+* to list indexes
+
+\> db.contacts.getIndexes()
+
+* the first one in the list "_id" is the default index
+
+### Configuring Indexes
+
+* unique index will guarantee that this field is unique like email for example.
+
+\> db.contacts.createIndex({email: 1}, {unique: true})
+
+### Partial Filters
+
 
 
 ## Geospatial Data
+
 
 ## Aggregation Framework
 
@@ -534,13 +577,6 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Stitch
 
-## Create Operations
-
-## Read Operations
-
-## Update Operations
-
-## Delete Operations
 
 ## Ref
 * https://www.udemy.com/course/mongodb-the-complete-developers-guide/
