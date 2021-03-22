@@ -976,11 +976,34 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Deploying a MongoDB Server
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/deploying.png)
+
 ### MongoDB Atlas
+
+* https://www.mongodb.com/cloud/atlas
+* start fro free > sign up
+* create cluster
 
 ### Backups & Setting Alerts in MongoDB Atlas
 
+* from MongoDB Atlas
+
 ### Connecting to our Cluster
+
+* from UI > cluster0 > connect > create a database user admin
+* add your IP to acces IPs
+* chooose a connection method > shell > copy command
+
+\> mongo "mongodb+srv://cluster0.mhvl9.mongodb.net/products" --username admin
+
+\> show dbs
+
+\> use products
+
+### Links
+
+* Official Docs on Replica Sets: https://docs.mongodb.com/manual/replication/
+* Official Docs on Sharding: https://docs.mongodb.com/manual/sharding/
 
 ## Transactions
 
