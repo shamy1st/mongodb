@@ -849,9 +849,56 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Assigning Roles to Users & Databases
 
+\> mongo -u admin -p admin
+
+\> use shop
+
+\> db.createUser({user: "appdev", pwd: "appdev", roles: ["readWrite"]})
+
+\> db.auth("appdev", "appdev")
+
+\> db.products.insertOne({name: "Book"})
+
+* error: logical sessions can't have multiple authenticated users
+
+\> mongo -u appdev -p appdev --authenticationDatabase shop
+
+\> use shop
+
+\> db.products.insertOne({name: "Book"})
+
 ### Updating & Extending Roles to Other Databases
 
+* now "appdev" user only can access shop database
+* we want to give him access to another databases
+
+\> mongo -u admin -p admin
+
+\> db.updateUser("appdev", {roles: ["readWrite", {role: "readWrite", db: "blog"}]})
+
+\> db.getUser("appdev")
+
+* now you can see that the user have readWrite role in blog database + old roles
+
+\> mongo -u appdev -p appdev --authenticationDatabase shop  
+
+\> use blog
+
+\> db.posts.insertOne({title: "It works!"})
+
+* something went wrong, please check it later!
+
 ### Adding SSL Transport Encryption
+
+* https://docs.mongodb.com/manual/tutorial/configure-ssl/
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/transport-encryption.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/ssl-1.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/ssl-2.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/ssl-3.png)
 
 ### Encryption at REST
 
