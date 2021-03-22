@@ -968,6 +968,12 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### Sharding
 
+![](https://github.com/shamy1st/mongodb/blob/main/images/sharding-1.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/sharding-2.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/sharding-3.png)
+
 ### Deploying a MongoDB Server
 
 ### MongoDB Atlas
