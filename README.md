@@ -1007,6 +1007,45 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Transactions
 
+### Example
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/transaction-example.png)
+
+\> use blog
+
+\> db.users.insertOne({name: "ahmed"})
+
+\> db.posts.insertMany(\[{title: "First Post", userId: ObjectId("6058edc471a69a1727e4f87c")}, {title: "Second Post", userId: ObjectId("6058edc471a69a1727e4f87c")}\])
+
+\> db.users.deleteOne({_id: ObjectId("6058edc471a69a1727e4f87c")})
+
+* now after we delete the user, this user have two posts
+* if we delete these posts by userId and for any reason this operation failed, then it's not good state now
+* the right thing is to delete user and his posts together in one transaction
+
+### Transaction
+
+\> const session = db.getMongo().startSession()
+
+\> session.startTransaction()
+
+\> const usersCollection = session.getDatabase("blog").users
+
+\> const postsCollection = session.getDatabase("blog").posts
+
+\> usersCollection.deleteOne({_id: ObjectId("6058ef7071a69a1727e4f87f")})
+
+\> postsCollection.deleteMany({userId: ObjectId("6058ef7071a69a1727e4f87f")})
+
+\> session.commitTransaction() - or session.abortTransaction()
+
+* now check users collection after commit
+
+\> db.users.find().pretty()
+
+* Official Docs on Transactions: https://docs.mongodb.com/manual/core/transactions/
+
+
 ## From Shell to Driver
 
 ## Stitch
@@ -1014,7 +1053,3 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Ref
 * https://www.udemy.com/course/mongodb-the-complete-developers-guide/
-
-
-
-
