@@ -923,6 +923,59 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ## Performance, Fault Tolerancy & Deployment
 
+### What Influences Performance?
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/what-influences-performance.png)
+
+### Capped Collections
+
+* is a special type of collection, which need to be created explicitly
+* where you limit the data or documents can be stored in there
+* old documents will be deleted when it's size is exceeded
+* basically a store where an old data is deleted when a new data comes in
+* efficient for high throughput application logs or caching
+* by default it is 4 bytes
+
+\> use performance
+
+\> db.createCollection("capped", {capped: true, size: 10000, max: 3})
+
+* size: 10000 -> maximum size in bytes
+* max: 3 -> means 3 documents at most
+
+\> db.capped.insertOne({name: "ahmed"})
+
+\> db.capped.insertOne({name: "elshamy"})
+
+\> db.capped.insertOne({name: "amr"})
+
+\> db.capped.find().pretty()
+
+* in default in capped collection you will get result in "insertion order"
+* now insert another document then the oldest one should be deleted "ahmed"
+
+\> db.capped.insertOne({name: "mona"})
+
+\> db.capped.find().pretty()
+
+### Replica Sets
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/replica-set-1.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/replica-set-2.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/replica-set-3.png)
+
+### Sharding
+
+### Deploying a MongoDB Server
+
+### MongoDB Atlas
+
+### Backups & Setting Alerts in MongoDB Atlas
+
+### Connecting to our Cluster
+
 ## Transactions
 
 ## From Shell to Driver
