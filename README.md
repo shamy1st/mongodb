@@ -900,7 +900,26 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/ssl-3.png)
 
+* [How to create a self-signed certificate with OpenSSL](https://stackoverflow.com/questions/10175812/how-to-create-a-self-signed-certificate-with-openssl)
+
 ### Encryption at REST
+
+* Storage Encryption is option allowed in mongoDB Enterprise
+* But you can hash your passwords from your apps
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/encryption-rest.png)
+
+### Links
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/security-summary.png)
+
+* Official "Encryption at Rest" Docs: https://docs.mongodb.com/manual/core/security-encryption-at-rest/
+* Official Security Checklist: https://docs.mongodb.com/manual/administration/security-checklist/
+* What is SSL/ TLS? => https://www.acunetix.com/blog/articles/tls-security-what-is-tls-ssl-part-1/
+* Official MongoDB SSL Setup Docs: https://docs.mongodb.com/manual/tutorial/configure-ssl/
+* Official MongoDB Users & Auth Docs: https://docs.mongodb.com/manual/core/authentication/
+* Official Built-in Roles Docs: https://docs.mongodb.com/manual/core/security-built-in-roles/
+* Official Custom Roles Docs: https://docs.mongodb.com/manual/core/security-user-defined-roles/
 
 ## Performance, Fault Tolerancy & Deployment
 
