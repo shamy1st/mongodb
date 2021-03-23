@@ -238,7 +238,6 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/arrays.png)
 
-
 ## Schemas & Relations: How to Structure Documents
 
 ### Schema or No Schema!
@@ -805,6 +804,31 @@ MongoDB (Humongous), because it can store lots and lots of data.
 ![](https://github.com/shamy1st/mongodb/blob/main/images/aggregation-framework.png)
 
 * [Aggregation Pipeline Stages](https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/#aggregation-pipeline-operator-reference)
+
+\> mongoimport persons.json -d analytics -c persons --jsonArray
+
+* go to mongo shell
+
+\> use analytics
+
+\> db.persons.findOne()
+
+### [match stage](https://docs.mongodb.com/manual/reference/operator/aggregation/match/)
+
+* return a cursor
+
+\> db.persons.aggregate(\[
+  {$match: {gender: "female"}}
+\]).pretty()
+
+### [group stage](https://docs.mongodb.com/manual/reference/operator/aggregation/group/)
+
+db.persons.aggregate(\[
+    {$match: {gender: "female"}},
+    {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
+\]).pretty()
+
+
 
 ## Numeric Data
 
