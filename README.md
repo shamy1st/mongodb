@@ -1049,10 +1049,11 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/shell-and-driver.png)
 
-
-
-
 ## Stitch
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/what-is-stitch.png)
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/stitch-serverless.png)
 
 
 ## Ref
