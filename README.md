@@ -1045,8 +1045,12 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 * Official Docs on Transactions: https://docs.mongodb.com/manual/core/transactions/
 
-
 ## From Shell to Driver
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/shell-and-driver.png)
+
+
+
 
 ## Stitch
 
