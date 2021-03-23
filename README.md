@@ -804,6 +804,8 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/aggregation-framework.png)
 
+* [Aggregation Pipeline Stages](https://docs.mongodb.com/manual/reference/operator/aggregation-pipeline/#aggregation-pipeline-operator-reference)
+
 ## Numeric Data
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/number-types.png)
