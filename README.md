@@ -1049,11 +1049,17 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/shell-and-driver.png)
 
-## Stitch
+## Realm (Stitch)
+
+* Build better apps faster with edge-to-cloud sync and fully managed backend services including triggers, functions, and GraphQL.
+* MongoDB Stitch is our new Backend as a Service (BaaS) that makes it easy for developers to create and launch applications across mobile and web platforms. Stitch provides a REST API on top of MongoDB with read, write, and validation rules built-in and full integration with the services you love. [link](https://www.mongodb.com/presentations/introduction-to-mongodb-stitch-drew-dipalma)
+* MongoDB Realm is a serverless platform and mobile database. MongoDB Stitch and Realm Database are now part of MongoDB Realm.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/what-is-stitch.png)
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/stitch-serverless.png)
+
+
 
 
 ## Ref
