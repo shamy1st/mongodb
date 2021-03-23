@@ -1059,8 +1059,5 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/stitch-serverless.png)
 
-
-
-
 ## Ref
 * https://www.udemy.com/course/mongodb-the-complete-developers-guide/
