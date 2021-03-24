@@ -823,12 +823,103 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ### [group stage](https://docs.mongodb.com/manual/reference/operator/aggregation/group/)
 
-db.persons.aggregate(\[
+\> db.persons.aggregate(\[
     {$match: {gender: "female"}},
     {$group: {_id: {state: "$location.state"}, totalPersons: {$sum: 1}}}
 \]).pretty()
 
+### [sort stage](https://docs.mongodb.com/manual/reference/operator/aggregation/sort/)
 
+\> db.persons.aggregate(\[
+    { $match: { gender: 'female' } },
+    { $group: { _id: { state: "$location.state" }, totalPersons: { $sum: 1 } } },
+    { $sort: { totalPersons: -1 } }
+\]).pretty();
+
+### [project stage](https://docs.mongodb.com/manual/reference/operator/aggregation/project/)
+
+* choose specific fields and do some operations on them if you want
+
+\> db.persons.aggregate(\[
+    {
+      $project: {
+        _id: 0,
+        gender: 1,
+        fullName: {
+          $concat: \[
+            { $toUpper: { $substrCP: \['$name.first', 0, 1\] } },
+            {
+              $substrCP: \[
+                '$name.first',
+                1,
+                { $subtract: \[{ $strLenCP: '$name.first' }, 1\] }
+              ]
+            },
+            ' ',
+            { $toUpper: { $substrCP: \['$name.last', 0, 1\] } },
+            {
+              $substrCP: \[
+                '$name.last',
+                1,
+                { $subtract: \[{ $strLenCP: '$name.last' }, 1\] }
+              \]
+            }
+          \]
+        }
+      }
+    }
+  \]).pretty();
+
+### Turning the Location Into a geoJSON Object
+
+* [convert](https://docs.mongodb.com/manual/reference/operator/aggregation/convert/)
+
+\> db.persons.aggregate(\[
+    {
+      $project: {
+        _id: 0,
+        name: 1,
+        email: 1,
+        location: {
+            type: "Point",
+            coordinates: \[
+                {
+                    $convert: {
+                        input: "$location.coordinates.longitude",
+                        to: "double",
+                        onError: 0.0,
+                        onNull: 0.0
+                    }
+                },
+                {
+                    $convert: {
+                        input: "$location.coordinates.latitude",
+                        to: "double",
+                        onError: 0.0,
+                        onNull: 0.0
+                    }
+                }
+            \]
+        }
+      }
+    }
+\]).pretty();
+
+### Transforming the Birthdate
+
+\> db.persons.aggregate(\[
+    {
+      $project: {
+        _id: 0,
+        name: 1,
+        email: 1,
+        birthdate: { $convert: { input: '$dob.date', to: 'date' } },
+        age: "$dob.age"
+      }
+    }
+  \]).pretty();
+
+### To be complete ...
 
 ## Numeric Data
 
