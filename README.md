@@ -973,6 +973,10 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 * but take care any operation should use NumberDecimal("") to avoid problems
 
+### Links
+
+* Modelling Number Monetary Data in MongoDB: https://docs.mongodb.com/manual/tutorial/model-monetary-data/
+
 ## Security
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/security-checklist.png)
