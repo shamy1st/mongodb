@@ -925,6 +925,54 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/number-types.png)
 
+### Integer int32
+
+* use NumberInt() for int32
+* size of the document 31 bytes
+
+\> db.persons.insertOne({age: NumberInt("50")})
+
+\> db.persons.stats()
+
+### Long int64
+
+* use NumberLong() for int64
+* size of the document 35 bytes
+
+\> db.companies.insertOne({age: NumberLong("5000000000")})
+
+\> db.companies.stats()
+
+### Double 64bit
+
+* by default mongodb uses for Double 64bit
+* size of the document 35 bytes
+
+\> db.persons.insertOne({age: 50})
+
+\> db.persons.stats()
+
+* What's Wrong with Normal Doubles?
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/double-problem.png)
+
+* the solution is to use High Precision Double 128bit
+
+### High Precision Double 128bit
+
+* use NumberDecimal() for High Precision Double 128bit
+* size of the document 41 bytes
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/double-128bit.png)
+
+\> db.nums.insertOne({a: NumberDecimal("50")})
+
+\> db.nums.stats()
+
+![](https://github.com/shamy1st/mongodb/blob/main/images/double-128bit-problem.png)
+
+* but take care any operation should use NumberDecimal("") to avoid problems
+
 ## Security
 
 ![](https://github.com/shamy1st/mongodb/blob/main/images/security-checklist.png)
