@@ -973,7 +973,13 @@ MongoDB (Humongous), because it can store lots and lots of data.
 
 * but take care any operation should use NumberDecimal("") to avoid problems
 
-### Links
+### Summary
+
+* For this Module, there's one important thing you have to keep in mind about the MongoDB Shell (which we're using via the mongo command)
+* It is based on JavaScript, it's running on JavaScript.
+* Hence you can use JavaScript syntax in there and hence the default data types are the default JavaScript data types.
+* That matters especially for the numbers. JavaScript does NOT differentiate between integers and floating point numbers => Every number is a 64bit float instead.
+* So 12 and 12.0 are exactly the same number in JavaScript and therefore also in the Shell.
 
 * Modelling Number Monetary Data in MongoDB: https://docs.mongodb.com/manual/tutorial/model-monetary-data/
 
